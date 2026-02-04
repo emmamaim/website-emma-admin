@@ -3,7 +3,7 @@
     <h3 class="mb-4">
         會員列表
     </h3>
-    <table class="table table-striped">
+    <table class="table table-striped text-center">
         <thead>
             <tr>
                 <th>姓名</th>

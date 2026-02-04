@@ -156,7 +156,7 @@ export default {
       this.loadingList = true
       this.errorList = ''
 
-      // 不要在這裡清空 detail，避免 UI 閃爍
+      // 不在這裡清空 detail，避免 UI 閃爍
       this.errorDetail = ''
 
       try {

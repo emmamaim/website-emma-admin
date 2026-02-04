@@ -36,7 +36,7 @@
     </div>
 
     <table class="table table-bordered align-middle">
-      <thead>
+      <thead class="text-center">
         <tr>
           <th style="width: 110px;">訂單編號</th>
           <th style="width: 140px;">會員</th>
@@ -47,7 +47,7 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody class="text-center">
         <tr v-for="o in displayOrders" :key="o.id">
           <td>{{ o.id }}</td>
           <td>{{ o.member }}</td>

@@ -24,6 +24,10 @@ const mutations = {
     // 只更新傳進來的欄位
     if (payload.price !== undefined) target.price = payload.price
     if (payload.status !== undefined) target.status = payload.status
+  },
+  // 替換商品（本地儲存備份）
+  REPLACE_PRODUCTS (state, products) {
+    state.products = products
   }
 }
 

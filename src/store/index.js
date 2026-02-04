@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+// 導入 plugin(持久化)
+import persistPlugin from './plugins/persist'
+
 // 導入products | orders 模塊
 import products from './modules/products'
 import orders from './modules/orders'
@@ -16,7 +19,7 @@ export default new Vuex.Store({
       { id: 1, name: 'emma1', password: '123' },
       { id: 2, name: 'emma2', password: '123' }
     ],
-    // 用戶（暫時）
+    // 目前登入的管理員（暫存）
     user: JSON.parse(localStorage.getItem('user')) || null,
     // 模擬會員資料
     members: [
@@ -39,8 +42,12 @@ export default new Vuex.Store({
     LOGOUT (state) {
       state.isLogin = false
       state.user = null
-      // 清除 登錄的localStorage
-      localStorage.clear()
+      // 舊的：清除 登錄的localStorage
+      // localStorage.clear()
+
+      // 只清除登入資訊，不清共享資料
+      localStorage.removeItem('isLogin')
+      localStorage.removeItem('user')
     }
   },
   actions: {
@@ -57,5 +64,6 @@ export default new Vuex.Store({
     // 注冊product模組
     products,
     orders
-  }
+  },
+  plugins: [persistPlugin()]
 })

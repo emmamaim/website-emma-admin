@@ -7,6 +7,10 @@ const state = {
 }
 
 const mutations = {
+  // 替換商品（本地儲存備份）
+  REPLACE_PRODUCTS (state, orders) {
+    state.orders = orders
+  },
   UPDATE_ORDER_STATUS (state, payload) {
     const target = state.orders.find(o => o.id === payload.id)
     if (!target) return

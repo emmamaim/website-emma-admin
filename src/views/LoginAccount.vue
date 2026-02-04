@@ -39,7 +39,7 @@ export default {
   },
 
   methods: {
-    handleLogin () {
+    async handleLogin () {
       // 排空檢查
       if (!this.account || !this.password) {
         this.error = '請輸入帳號與密碼'
@@ -64,7 +64,7 @@ export default {
         return
       }
 
-      // 模擬登入成功
+      // 模擬登入成功(新增：登入后載入該賬號的持久化資料)
       this.$store.dispatch('login', {
         id: admin.id,
         name: admin.name

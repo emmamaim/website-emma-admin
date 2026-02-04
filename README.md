@@ -1,5 +1,111 @@
-# website-emma-admin
+EMMA Admin 後台管理系統（Project 2）
 
+一個以 Vue 2 為核心的電商後台管理系統，模擬真實電商後台的操作流程，重點放在 狀態管理、資料共享與持久化設計。
+
+🔍 專案簡介
+本專案為「母嬰電商品牌 EMMA」的後台管理系統，提供管理員登入後進行：
+a.商品管理
+b.訂單管理（狀態流轉）
+c.會員列表
+d.最新消息展示
+
+專案不依賴後端 API，改以 Vuex + localStorage 模擬資料庫行為，重點展示前端在資料流與狀態管理上的能力。
+
+🧩 技術棧（Tech Stack）
+Vue 2
+Vue Router
+Vuex（modules + plugin）
+Bootstrap 5
+JavaScript (ES6)
+localStorage（資料持久化）
+mock JSON（模擬 API）
+
+🔐 登入說明（測試帳號）
+帳號	密碼
+emma1	123
+emma2	123
+
+不同管理員帳號登入後 共享同一份商品 / 訂單資料（符合真實電商後台邏輯）
+
+✨ 主要功能
+1️⃣ 管理員登入
+登入 / 登出
+
+Router Guard：未登入不可進入後台(路由守衛)
+
+刷新頁面登入狀態不會丟失（持久化persist）
+
+2️⃣ 商品管理（Vuex Module）
+商品新增 / 刪除
+商品價格、狀態（上架 / 下架）編輯
+所有資料集中由 Vuex 管理
+
+3️⃣ 訂單管理（亮點功能）
+訂單列表顯示
+訂單狀態流轉（待付款 → 已付款 → 待出貨 → 已完成）
+可隨時將訂單設為「已取消」
+訂單狀態以 Badge （有底色的狀態標簽）呈現
+
+支援：
+狀態篩選
+日期區間篩選
+金額 / 日期排序
+
+4️⃣ 資料持久化設計（核心亮點）
+使用 Vuex plugin 將 商品 / 訂單資料持久化至 localStorage
+刷新頁面資料不會遺失
+
+多管理員登入時資料保持一致（共享資料模型）
+模擬真實後台「共用資料庫」的行為
+
+5️⃣ 架構設計
+Layout 分離（LoginLayout / AdminLayout）
+Vuex modules：
+products
+orders
+
+組件拆分：
+Sidebar
+Header
+
+各功能 View
+📁 專案結構（簡化）
+src/
+├─ layouts/
+│  ├─ LoginLayout.vue
+│  └─ AdminLayout.vue
+│
+├─ views/
+│  ├─ DashboardDetails.vue
+│  ├─ ProductsDetails.vue
+│  ├─ OrdersView.vue
+│  ├─ MembersDetails.vue
+│  └─ NewsDetails.vue
+│
+├─ store/
+│  ├─ index.js
+│  ├─ modules/
+│  │  ├─ products.js
+│  │  └─ orders.js
+│  └─ plugins/
+│     └─ persist.js
+│
+└─ router/
+   └─ index.js
+
+🚀 專案啟動方式
+npm install
+npm run serve
+
+📌 專案定位
+
+本專案定位為：
+
+「展示 Vue 2 + Vuex 的後台管理與狀態管理能力」
+
+後續進階專案（Vue 3 + Pinia）將展示更現代的架構與高互動設計。
+
+# website-emma-admin
 ## Project setup
 ```
 npm install
