@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '@/store'
+import { isLoggedIn } from '@/utils/auth'
 
 Vue.use(Router)
 
@@ -42,8 +42,8 @@ const router = new Router({
         },
         {
           path: 'orders',
-          name: 'OrdersDetails',
-          component: () => import('@/views/OrdersDetails.vue')
+          name: 'OrdersView',
+          component: () => import('@/views/OrdersView.vue')
         },
         {
           path: 'news',
@@ -63,11 +63,11 @@ const router = new Router({
 
 /* ===== Router Guard ===== */
 router.beforeEach((to, from, next) => {
-  const isLogin = store.state.isLogin
+  const login = isLoggedIn()
 
-  if (to.path !== '/login' && !isLogin) {
+  if (to.path !== '/login' && !login) {
     next('/login')
-  } else if (to.path === '/login' && isLogin) {
+  } else if (to.path === '/login' && login) {
     next('/')
   } else {
     next()

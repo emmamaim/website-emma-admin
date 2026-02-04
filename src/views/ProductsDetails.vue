@@ -80,7 +80,6 @@
         </tr>
       </tbody>
     </table>
-
   </div>
 </template>
 
@@ -105,7 +104,7 @@ export default {
 
   computed: {
     products () {
-      return this.$store.state.products
+      return this.$store.state.products.products
     }
   },
 
@@ -113,7 +112,7 @@ export default {
     // 新增商品
     addProduct () {
       if (!this.newProduct.name || !this.newProduct.price) return
-      this.$store.dispatch('addProduct', this.newProduct)
+      this.$store.dispatch('products/addProduct', this.newProduct)
       this.newProduct = { name: '', price: '' }
     },
 
@@ -123,7 +122,7 @@ export default {
       if (this.editingProduct && this.editingProduct.id === id) {
         this.cancelEdit()
       }
-      this.$store.dispatch('removeProduct', id)
+      this.$store.dispatch('products/removeProduct', id)
     },
 
     // 打開編輯面板
@@ -143,7 +142,7 @@ export default {
       // 基本驗證
       if (this.editingForm.price === '' || this.editingForm.price === null) return
 
-      this.$store.dispatch('updateProduct', {
+      this.$store.dispatch('products/updateProduct', {
         id: this.editingProduct.id,
         price: this.editingForm.price,
         status: this.editingForm.status

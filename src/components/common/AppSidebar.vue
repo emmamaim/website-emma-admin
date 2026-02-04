@@ -17,7 +17,7 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link :to="{ name: 'OrdersDetails' }" class="nav-link">
+        <router-link :to="{ name: 'OrdersView' }" class="nav-link">
           訂單管理
         </router-link>
       </li>

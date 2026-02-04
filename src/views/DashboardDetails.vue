@@ -20,9 +20,9 @@ export default {
   computed: {
     cards () {
       return [
-        { title: '商品數量', value: this.$store.state.products.length },
-        { title: '上架商品', value: this.$store.state.products.filter(p => p.status === '上架').length },
-        { title: '管理員', value: this.$store.state.user ? 1 : 0 }
+        { title: '會員數量', value: this.$store.state.members.length },
+        { title: '商品數量', value: this.$store.state.products.products.filter(p => p.status === '上架').length },
+        { title: '訂單數量', value: this.$store.state.orders.orders.filter(o => o.status !== '已取消').length }
       ]
     }
   }

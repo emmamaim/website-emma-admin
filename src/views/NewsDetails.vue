@@ -48,7 +48,6 @@
                     {{ formatDate(it.date) }}
                   </div>
                 </div>
-                <span class="badge bg-light text-dark">查看</span>
               </div>
             </button>
           </div>
@@ -66,7 +65,7 @@
               上一頁
             </button>
 
-            <small class="text-muted">共 {{ total }} 篇</small>
+            <small class="text-muted">共 {{ total }} 篇 | 第 {{ page }} 頁</small>
 
             <button
               class="btn btn-outline-secondary btn-sm"
@@ -124,7 +123,7 @@ export default {
 
       q: '',
       page: 1,
-      limit: 6,
+      limit: 5,
 
       // 原始資料（全部）
       allNews: [],
